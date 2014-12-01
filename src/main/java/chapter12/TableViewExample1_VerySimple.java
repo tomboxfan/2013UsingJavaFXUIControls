@@ -11,8 +11,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-public class TableViewSample extends Application {
-    private TableView table = new TableView();
+public class TableViewExample1_VerySimple extends Application {
+    private TableView<Person> table = new TableView<>();
 
     public static void main(String[] args) {
         launch(args);
@@ -24,16 +24,28 @@ public class TableViewSample extends Application {
         stage.setTitle("Table View Sample");
         stage.setWidth(300);
         stage.setHeight(500);
-//֮�϶�����---------------------------------
+        
+//重点代码开始--------------------------------------------
         
         final Label label = new Label("Address Book");
         label.setFont(new Font("Arial", 20));
         table.setEditable(true);
         
-        TableColumn firstNameCol = new TableColumn("First Name");
-        TableColumn lastNameCol = new TableColumn("Last Name");
-        TableColumn emailCol = new TableColumn("Email");
+        TableColumn<Person, String> firstNameCol = new TableColumn<>("First Name");
+        TableColumn<Person, String> lastNameCol = new TableColumn<>("Last Name");
+        
+        
+        //--这里展示了复合columns的用法---------------------------------------
+        TableColumn<Person, String> emailCol = new TableColumn<>("Email");
+        TableColumn<Person, String> firstEmailCol = new TableColumn<>("Primary");
+        TableColumn<Person, String> secondEmailCol = new TableColumn<>("Secondary");
+        emailCol.getColumns().addAll(firstEmailCol, secondEmailCol);
+        //-------------------------------------------------------------
+        
         table.getColumns().addAll(firstNameCol, lastNameCol, emailCol);
+        
+        
+//重点代码结束--------------------------------------------        
         
         final VBox vbox = new VBox();
         vbox.setSpacing(5);
