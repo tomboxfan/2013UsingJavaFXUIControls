@@ -45,6 +45,9 @@ public class TableViewExample6_MapData extends Application {
         secondDataColumn.setCellValueFactory(new MapValueFactory(Column2MapKey));
         secondDataColumn.setMinWidth(130);
         
+        
+        //你可以使用一个ObservableList<Map<String, String>>数据结构来创建一个TableView对象
+        //table的每行都是一个map<String, String>， 所以TableView的定义就是TableView<Map<String, String>>
         TableView<Map<String, String>> table_view = new TableView<>(generateDataInMap());
         table_view.setEditable(true);
         table_view.getSelectionModel().setCellSelectionEnabled(true);
@@ -87,6 +90,9 @@ public class TableViewExample6_MapData extends Application {
 //--布局代码结束-----------------------------------------------------------
     }
 
+    //这个ObservableList<Map<String, String>>就是表格中内容的集合
+    //list中有好多个map，每个map代表一行
+    //map中有好多key-value pair, 每个key代表一列，那么key下面的value就是那个cell的value
     private ObservableList<Map<String, String>> generateDataInMap() {
         int max = 10;
         ObservableList<Map<String, String>> allData = FXCollections.observableArrayList();
