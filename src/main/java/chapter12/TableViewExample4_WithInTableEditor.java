@@ -23,6 +23,9 @@ import javafx.stage.Stage;
 
 //这个例子程序主要演示如何使得TableView可以变得Editable
 //注意：编辑结束之后必须要按enter key,新的value才会进去
+//一个非常值得注意的一点是:
+//TextFieldTableCell实现了TableCell接口；和它并列的类还有CheckBoxTableCell, ChoiceBoxTableCell, ComboBoxTableCell, ProgressBarTableCell
+
 public class TableViewExample4_WithInTableEditor extends Application {
     
     //@formatter:off
